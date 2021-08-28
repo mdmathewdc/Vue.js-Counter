@@ -1,4 +1,4 @@
-# first-vue-app
+# Vue.js Counter app
 
 ## Project setup
 ```
