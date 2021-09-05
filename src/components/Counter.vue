@@ -1,6 +1,6 @@
  <template>
   <div>
-    <h1>Current Counter: {{ count }}</h1>
+    <h2>Counter: {{ count }}</h2>
 
     <button @click="increment" class="blue-button">Click to Increment</button>
     <button @click="decrement" class="blue-button">Click to Decrement</button>
