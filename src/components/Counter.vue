@@ -1,12 +1,10 @@
  <template>
-  <div class="hello2">
-    <h1>{{ msg }}</h1>
-    <p>
-      Current counter : {{ count }}
-    </p>
-    <button @click="increment">Click to Increment</button>
-    <button @click="decrement">Click to Decrement</button>
-    <button v-on:click="reverseMessage">Click me</button>
+  <div>
+    <h1>Current Counter: {{ count }}</h1>
+
+    <button @click="increment" class="blue-button">Click to Increment</button>
+    <button @click="decrement" class="blue-button">Click to Decrement</button>
+    <button v-on:click="reset" class="red-button">Reset</button>
 
 
   </div>
@@ -30,8 +28,8 @@ export default {
       decrement() {
           this.count -= 1;
       },
-      reverseMessage() {
-          this.count = 100;
+      reset() {
+          this.count = 0;
       }
   }
 }
@@ -39,6 +37,31 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+button {
+  margin: 10px;
+}
+.blue-button {
+  background-color: #189fdd; /* Blue */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.red-button {
+  background-color: #f7542c; /* Red */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 h3 {
   margin: 40px 0 0;
 }
