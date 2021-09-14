@@ -14,7 +14,7 @@
 
     <router-view />
 
-    <img v-bind:src="imagePath">
+    <img :src="imagePath">
     <!-- <img src="./assets/logo.png"> -->
 
 
