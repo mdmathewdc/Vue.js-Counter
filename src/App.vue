@@ -7,6 +7,7 @@
     <!-- `<router-link>` will render an `<a>` tag with the correct `href` attribute -->
     <router-link to="/">Home</router-link>
     <router-link to="/about">About App</router-link>
+    <router-link to="/404">404 Test Page</router-link>
     <p class="heading">Vue.js Counter App</p>
   </div>
 
