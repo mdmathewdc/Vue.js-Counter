@@ -16,6 +16,8 @@
 
     <img :src="imagePath">
     <!-- <img src="./assets/logo.png"> -->
+    <p v-if="inStock"> In stock </p>
+    <p v-else>Out of stock</p>
 
 
   <HelloWorld msg="Vue.js Counter App"/>
@@ -35,7 +37,8 @@ export default {
   },
   data() {
     return {
-      imagePath : require('./assets/logo.png')
+      imagePath : require('./assets/logo.png'),
+      inStock: false
     }
   }
 }
