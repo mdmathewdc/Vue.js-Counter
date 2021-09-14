@@ -5,6 +5,7 @@
     <!-- use the router-link component for navigation. -->
     <!-- specify the link by passing the `to` prop. -->
     <!-- `<router-link>` will render an `<a>` tag with the correct `href` attribute -->
+  
     <router-link to="/">Home</router-link>
     <router-link to="/about">About App</router-link>
     <router-link to="/404">404 Test Page</router-link>
@@ -12,6 +13,9 @@
   </div>
 
     <router-view />
+
+    <img v-bind:src="imagePath">
+    <!-- <img src="./assets/logo.png"> -->
 
 
   <HelloWorld msg="Vue.js Counter App"/>
@@ -28,6 +32,11 @@ export default {
   components: {
     HelloWorld,
     Counter
+  },
+  data() {
+    return {
+      imagePath : require('./assets/logo.png')
+    }
   }
 }
 </script>
