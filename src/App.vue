@@ -19,6 +19,19 @@
     <p v-if="inStock"> In stock </p>
     <p v-else>Out of stock</p>
 
+    <p v-show="inStock"> This paragraph will be displayed if the value is true </p>
+
+    <p v-if="inventory > 10"> The inventory is greater than 10 and in stock </p>
+    <p v-else-if="inventory <=10 && inventory > 0">Almost sold out! </p>
+    <p v-else> Sold out </p>
+
+    <ul>
+      <li v-for="detail in details" :key="detail">{{ detail }}</li>
+    </ul>
+
+    <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+
+
 
   <HelloWorld msg="Vue.js Counter App"/>
   <Counter msg="Counter app message"/>
@@ -38,7 +51,13 @@ export default {
   data() {
     return {
       imagePath : require('./assets/logo.png'),
-      inStock: false
+      inStock: true,
+      inventory: 100,
+      details: ['50% cotton', '30% wool', '20% polyester'],
+        variants: [
+      { id: 2234, color: 'green' },
+      { id: 2235, color: 'blue' }
+    ]
     }
   }
 }
