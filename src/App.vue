@@ -29,7 +29,7 @@
       <li v-for="detail in details" :key="detail">{{ detail }}</li>
     </ul>
 
-    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)" class="color-circle" :style="{backgroundColor: variant.color}">{{ variant.color }}</div>
 
     <button class="button" v-on:click="addToCart">Add to cart</button>
     <div class="cart">Cart : {{ cart }}</div>
@@ -79,6 +79,14 @@ export default {
 </script>
 
 <style>
+
+.color-circle {
+  width: 50px;
+  height: 50px;
+  margin-top: 8px;
+  border: 2px solid #d8d8d8;
+  border-radius: 50%;
+}
 
 body {
   margin: 0px;
