@@ -14,7 +14,7 @@
 
     <router-view />
 
-    <img :src="imagePath">
+    <img :src="image">
     <!-- <img src="./assets/logo.png"> -->
     <p v-if="inStock"> In stock </p>
     <p v-else>Out of stock</p>
@@ -29,7 +29,10 @@
       <li v-for="detail in details" :key="detail">{{ detail }}</li>
     </ul>
 
-    <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+
+    <button class="button" v-on:click="addToCart">Add to cart</button>
+    <div class="cart">Cart : {{ cart }}</div>
 
 
 
@@ -50,14 +53,26 @@ export default {
   },
   data() {
     return {
-      imagePath : require('./assets/logo.png'),
+      image : require('./assets/logo.png'),
       inStock: true,
       inventory: 100,
       details: ['50% cotton', '30% wool', '20% polyester'],
         variants: [
-      { id: 2234, color: 'green' },
-      { id: 2235, color: 'blue' }
-    ]
+      { id: 2234, color: 'green', image: require('./assets/green-socks.png') },
+      { id: 2235, color: 'red', image: require('./assets/red-socks.png') }
+    ],
+    cart: 0
+    }
+  },
+  methods: {
+    addToCart() {
+      this.cart += 1
+    },
+
+    updateImage(variantImage) {
+
+      this.image = variantImage
+
     }
   }
 }
