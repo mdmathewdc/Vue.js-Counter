@@ -37,7 +37,7 @@
     <h1>{{ title }}</h1>
 
 
-  <HelloWorld msg="Vue.js Counter App"/>
+  <HelloWorld msg="Vue.js Counter App 1" :premium="premium"/>
   <Counter msg="Counter app message"/>
 
 </template>
@@ -54,6 +54,7 @@ export default {
   },
   data() {
     return {
+      premium: true,
       selectedVariant: 0,
       product: 'Socks',
       brand: 'Vue Mastery',

@@ -1,6 +1,8 @@
  <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2>{{ premium }}</h2>
+    <p>Shipping - {{ shipping }}</p>
   </div>
 </template>
 
@@ -8,7 +10,23 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: {
+      type: String,
+      required: true
+    },
+    premium: {
+      type: Boolean,
+      required: true
+    }
+  },
+  computed: {
+    shipping() {
+   if (this.premium) {
+      return 'Free'
+    }
+      return 2.99
+    }
+ 
   }
 }
 </script>
