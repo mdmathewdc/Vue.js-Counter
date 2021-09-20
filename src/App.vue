@@ -29,11 +29,12 @@
       <li v-for="detail in details" :key="detail">{{ detail }}</li>
     </ul>
 
-    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)" class="color-circle" :style="{backgroundColor: variant.color}">{{ variant.color }}</div>
-
-    <button class="button" v-on:click="addToCart">Add to cart</button>
+    <div v-for="(variant, index) in variants" :key="variant.id"  class="color-circle" :style="{backgroundColor: variant.color}" @mouseover="updateVariant(index)">{{ variant.color }}</div>
+    <!-- @mouseover="updateImage(variant.image)" -->
+    <button class="button" v-on:click="addToCart" :disabled= "inStock" :class="{disabledButton: inStock}">Add to cart</button>
     <div class="cart">Cart : {{ cart }}</div>
 
+    <h1>{{ title }}</h1>
 
 
   <HelloWorld msg="Vue.js Counter App"/>
@@ -53,13 +54,16 @@ export default {
   },
   data() {
     return {
-      image : require('./assets/logo.png'),
-      inStock: true,
+      selectedVariant: 0,
+      product: 'Socks',
+      brand: 'Vue Mastery',
+      // image : require('./assets/logo.png'),
+      // inStock: true,
       inventory: 100,
       details: ['50% cotton', '30% wool', '20% polyester'],
         variants: [
-      { id: 2234, color: 'green', image: require('./assets/green-socks.png') },
-      { id: 2235, color: 'red', image: require('./assets/red-socks.png') }
+      { id: 2234, color: 'green', image: require('./assets/green-socks.png'), quantity: 50 },
+      { id: 2235, color: 'red', image: require('./assets/red-socks.png'), quantity: 0 }
     ],
     cart: 0
     }
@@ -73,6 +77,24 @@ export default {
 
       this.image = variantImage
 
+    },
+
+    updateVariant(index) {
+      this.selectedVariant = index
+    }
+  },
+  computed: {
+    title() {
+      return this.brand + ' ' + this.product
+    },
+    image () {
+  return this.variants[this.selectedVariant].image
+
+    },
+    inStock() {
+  return this.variants[this.selectedVariant].quantity
+  // return true
+
     }
   }
 }
@@ -80,6 +102,11 @@ export default {
 
 <style>
 
+.disabledButton {
+  background-color: #d8d8d8;
+  cursor: not-allowed;
+
+}
 .color-circle {
   width: 50px;
   height: 50px;
